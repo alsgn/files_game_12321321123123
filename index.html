@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f3f0e9" />
+  <title>헤어진 다음 날 — 시나리오 초안</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="game-shell" aria-label="선택형 스토리 게임">
+    <header class="topbar">
+      <div class="chapter"><span id="story-number" class="chapter-mark">STORY 01</span><span id="perspective-label" class="chapter-perspective">지우 시점</span><span id="scene-title">교실 문 앞</span></div>
+      <div class="meters" aria-label="현재 상태 게이지">
+        <div class="meter" aria-label="정서적 부담">
+          <div class="meter-label"><span id="burden-label">정서적 부담</span><span class="meter-reading"><span id="burden-value">20</span><span id="burden-delta" class="meter-delta" aria-live="polite"></span></span></div>
+          <div class="meter-track"><div id="burden-fill" class="meter-fill burden-fill"></div></div>
+        </div>
+        <div class="meter" aria-label="도움 연결도">
+          <div class="meter-label"><span id="support-label">도움 연결도</span><span class="meter-reading"><span id="support-value">0</span><span id="support-delta" class="meter-delta" aria-live="polite"></span></span></div>
+          <div class="meter-track"><div id="support-fill" class="meter-fill support-fill"></div></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="stage" aria-label="이야기 장면">
+      <img id="background-image" class="background" src="./public/assets/classroom-pencil.png" alt="연필 스케치로 그린 교실 장면" />
+      <div class="stage-shade"></div>
+      <section id="welcome-panel" class="welcome-panel" aria-label="게임 안내">
+        <div class="welcome-card">
+          <span class="perspective-kicker">헤어진 다음 날 · 교육용 이야기</span>
+          <h1>같은 사건, 세 사람의 시선</h1>
+          <p>피해자 지우의 이야기에서 시작해 방관자 민서, 가해자 태오의 순서로 플레이합니다.<br>세 시점을 모두 지나며 각자의 자리에서 할 수 있는 행동을 생각해보세요.</p>
+          <button id="welcome-start" class="transition-continue" type="button">STORY 01 시작 <span aria-hidden="true">→</span></button>
+        </div>
+      </section>
+      <div id="phone-ring-effect" class="phone-ring-effect" aria-label="휴대전화가 진동함" hidden><span class="ring-phone"></span><span class="ring-wave wave-one"></span><span class="ring-wave wave-two"></span></div>
+      <section id="phone-chat" class="phone-chat" aria-label="친구들과의 채팅" aria-live="polite" hidden>
+        <div class="phone-chat-header"><span class="chat-back">‹</span><strong id="phone-chat-title">친구들</strong><span class="chat-menu-dots">•••</span></div>
+        <div id="phone-messages" class="phone-messages"></div>
+        <div id="phone-chat-note" class="phone-chat-note" aria-live="polite"></div>
+        <div class="phone-composer"><span>메시지 입력…</span><span class="send-mark">↑</span></div>
+        <div class="phone-chat-hint">스페이스바 또는 오른쪽 방향키</div>
+      </section>
+      <div id="choice-panel" class="choice-panel" aria-live="polite"></div>
+      <div id="transition-panel" class="transition-panel" aria-live="polite" role="button" tabindex="0" hidden>
+        <span id="transition-kicker" class="transition-kicker">SCENE TRANSITION</span>
+        <strong id="transition-title"></strong>
+        <p id="transition-description" class="transition-description"></p>
+        <button id="transition-continue" class="transition-continue" type="button">다음 장면으로 <span aria-hidden="true">→</span></button>
+        <span class="transition-hint">버튼을 누르거나 스페이스바로 계속</span>
+      </div>
+      <button id="advance-button" class="advance-button" type="button" aria-label="다음 대사">›</button>
+      <section class="dialogue" aria-live="polite" aria-atomic="true">
+        <div class="speaker-row"><span id="speaker" class="speaker">나레이션</span><span id="scene-counter" class="scene-counter">01 / 09</span></div>
+        <p id="line" class="line"></p>
+        <div class="dialogue-hint">스페이스바 또는 오른쪽 방향키</div>
+      </section>
+      <section id="reflection-panel" class="reflection-panel" aria-labelledby="reflection-title" hidden>
+        <div class="reflection-card">
+          <span class="perspective-kicker">STORY 01 · STORY 02 · STORY 03</span>
+          <h1 id="reflection-title">이야기 밖에서, 내가 할 수 있는 일</h1>
+          <p class="reflection-intro">세 사람의 시점에서 본 일을 떠올리며, 현실에서 실천할 행동을 적어보세요.</p>
+          <label for="reflection-victim">피해자에게 건네고 싶은 응원의 한마디</label>
+          <textarea id="reflection-victim" rows="2" placeholder="예: 네 잘못이 아니야. 네가 원할 때 곁에서 들어줄게."></textarea>
+          <label for="reflection-aggressor">가해자가 자신의 행동을 바로잡기 위해 할 수 있는 일</label>
+          <textarea id="reflection-aggressor" rows="2" placeholder="예: 사실이 아닌 말을 직접 정정하고, 퍼뜨린 사람들에게 확산을 멈춰 달라고 말한다."></textarea>
+          <label for="reflection-bystander">방관자가 피해자를 도울 수 있는 직접적·간접적 방법</label>
+          <textarea id="reflection-bystander" rows="2" placeholder="예: 안전한 자리에서 먼저 안부를 묻거나, 목격한 사실을 믿을 만한 어른에게 알린다."></textarea>
+          <div class="reflection-actions"><button id="reflection-save" class="transition-continue" type="button">내 실천 약속 저장 <span aria-hidden="true">✓</span></button><span id="reflection-status" role="status"></span></div>
+          <small>작성한 내용은 이 기기의 브라우저에 저장되며 외부로 전송되지 않습니다.</small>
+        </div>
+      </section>
+    </section>
+    <footer class="footer"><span>헤어진 다음 날</span><span id="save-state">초안 플레이</span></footer>
+  </main>
+  <script src="./game.js"></script>
+</body>
+</html>
